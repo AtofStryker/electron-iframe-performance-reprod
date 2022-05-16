@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+
+      .takes-up-full-window {
+        width: 100%;
+        height: 100%;
+      }
+      .iframe-style {
+        position: fixed;
+        visibility: hidden;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="takes-up-full-window">
+      <h1>💖 Hello World!</h1>
+      <p>Welcome to your Electron application.</p>
+    </div>
+  </body>
+  <iframe id="cross-origin-iframe" src="http://www.google.com" class="iframe-style"></iframe>
+  <script type="text/javascript">
+      const crossOriginFrame = document.getElementById("cross-origin-iframe");
+      const timeBeforeTimeout = Date.now()
+      crossOriginFrame.contentWindow.setTimeout(() => {
+        console.log('SetTimeout from iframe time: ', Date.now() - timeBeforeTimeout)
+      }, 1000)
+  </script>
+</html>
